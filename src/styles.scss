@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+
+.green {
+  background-color: green;
+}
+
+.click {
+  cursor: pointer;
+}
+
+.check-style {
+  display: flex;
+  align-items: center;
+
+  .form-check {
+    margin-top: 30px;
+  }
+}
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+$limit: 100;
+
+@mixin margins {
+  @for $i from 0 through $limit {
+    .margin-left-#{$i} {
+      margin-left: #{$i}px !important;
+    }
+
+    .margin-right-#{$i} {
+      margin-right: #{$i}px !important;
+    }
+
+    .margin-bottom-#{$i} {
+      margin-bottom: #{$i}px !important;
+    }
+
+    .margin-top-#{$i} {
+      margin-top: #{$i}px !important;
+    }
+
+    .margin-#{$i} {
+      margin: #{$i}px !important;
+    }
+
+    .padding-#{$i} {
+      padding: #{$i}px !important;
+    }
+  }
+}
+
+@include margins;

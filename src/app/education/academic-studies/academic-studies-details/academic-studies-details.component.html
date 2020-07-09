@@ -1,0 +1,97 @@
+<div class="container margin-top-30">
+  <h3 class="margin-bottom-30">Academic study details</h3>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="Id">
+          <strong>Academic Study identifier</strong>
+        </label>
+        <br>
+        <span id="Id">{{academicStudies.id | missingData}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="educationalInstitution"><strong>Educational Institution</strong></label>
+        <br>
+        <span id="educationalInstitution">{{academicStudies.educationalInstitution | missingData}}</span>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="formation"><strong>Formation</strong></label>
+        <br>
+        <span id="formation">{{academicStudies.formation | missingData}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="fieldOfStudy"><strong>Field of Study</strong></label>
+        <br>
+        <span id="fieldOfStudy">{{academicStudies.fieldOfStudy | missingData}}</span>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="startDate"><strong>Start Date</strong></label>
+        <br>
+        <span id="startDate">{{academicStudies.startDate | missingData}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="endDate"><strong>End Date</strong></label>
+        <br>
+        <span id="endDate">{{academicStudies.endDate | missingData}}</span>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="grade"><strong>Grade</strong></label>
+        <br>
+        <span id="grade">{{academicStudies.grade | missingData}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="activities"><strong>Activities</strong></label>
+        <br>
+        <span id="activities">{{academicStudies.activities | missingData}}</span>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="description"><strong>Description</strong></label>
+        <br>
+        <span id="description">{{academicStudies.description | missingData}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-info margin-right-10" (click)="previousState()">
+        <i class="fa fa-arrow-left"></i>
+        <span class="margin-left-5">Back</span>
+      </button>
+      <button class="btn btn-primary" [routerLink]="['../../update-academic-studies', academicStudies.id]">
+        <i class="fa fa-pencil"></i>
+        <span class="margin-left-5">Edit</span>
+      </button>
+    </div>
+  </div>
+
+</div>

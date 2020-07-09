@@ -1,0 +1,53 @@
+<div class="container margin-top-30">
+  <h3>
+    <span>List Courses</span>
+    <button class="btn btn-primary float-right" [routerLink]="['../update-courses']">
+      <i class="fa fa-plus"></i>
+      <span class="margin-left-5">New Course</span>
+    </button>
+  </h3>
+
+  <input id="textInput" type="text" placeholder="Search" #textInput (input)="searchField()"/>
+
+  <table class="table margin-top-30 table-hover">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Course name</th>
+      <th scope="col">Course Organization</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let course of courses">
+
+      <ng-container *ngIf="text === '' ||
+      (course.id.substr(0, text.length) === text ||
+       course.courseName.substr(0,text.length) === text ||
+       course.courseOrg.substr(0,text.length) === text)" >
+
+      <th scope="row" class="click" [routerLink]="['../courses-details', course.id]">{{course.id}}</th>
+      <td>{{course.courseName}}</td>
+      <td>{{course.courseOrg}}</td>
+      <td>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-info btn-sm" [routerLink]="['../courses-details', course.id]">
+            <i class="fa fa-eye"></i>
+            <span class="margin-left-5">View</span>
+          </button>
+          <button type="button" class="btn btn-primary btn-sm" [routerLink]="['../update-courses', course.id]">
+            <i class="fa fa-pencil"></i>
+            <span class="margin-left-5">Edit</span>
+          </button>
+          <button type="button" class="btn btn-danger btn-sm" (click)="deleteCourse(course.id)">
+            <i class="fa fa-times"></i>
+            <span class="margin-left-5">Delete</span>
+          </button>
+        </div>
+      </td>
+
+      </ng-container>
+    </tr>
+    </tbody>
+  </table>
+</div>

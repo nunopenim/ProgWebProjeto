@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="">
+    <img src="../../assets/images/linkedin_logo.png" width="30" height="30" alt="">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon text-light"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarContent">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link text-light" routerLink="">
+          <i class="fa fa-home"></i>
+          <span class="margin-left-5">Home</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link text-light" routerLink="">
+          <i class="fa fa-id-card"></i>
+          <span class="margin-left-5">Profile</span>
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <div class="d-inline-block">
+          <a class="nav-link dropdown-toggle text-light click" id="navbarDropdown" role="button" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-gears"></i>
+            <span class="margin-left-5">My Projects</span>
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" [routerLink]="['personal-projects']">Personal projects</a>
+            <a class="dropdown-item" [routerLink]="['other-projects']">Other projects</a>
+            <a class="dropdown-item" [routerLink]="['list-projects']">Manage projects</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <div class="d-inline-block">
+          <a class="nav-link dropdown-toggle text-light click" id="educationDropdown" role="button" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-graduation-cap"></i>
+            <span class="margin-left-5">My Education</span>
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" [routerLink]="['list-academic-studies']">Manage Academic Studies</a>
+            <a class="dropdown-item" [routerLink]="['list-certifications']">Manage Certifications</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <div class="d-inline-block">
+          <a class="nav-link dropdown-toggle text-light click" id="universityDropdowm" role="button" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-university"></i>
+            <span class="margin-left-5">University</span>
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" [routerLink]="['list-courses']">Courses</a>
+            <a class="dropdown-item" [routerLink]="['list-teachers']">Teachers</a>
+            <a class="dropdown-item" [routerLink]="['list-subjects']">Subject</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link text-light" tabindex="-1" routerLink="contacts">
+          <i class="fa fa-envelope"></i>
+          <span class="margin-left-5">Contacts</span>
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link text-light" href="#">
+          <i class="fa fa-sign-out"></i>
+          <span>Logout</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+

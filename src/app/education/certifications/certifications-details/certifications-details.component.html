@@ -1,0 +1,90 @@
+<div class="container margin-top-30">
+  <h3 class="margin-bottom-30">Project details</h3>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="Id">
+          <strong>Certification identifier</strong>
+        </label>
+        <br>
+        <span id="Id">{{certification.id | missingData}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="certName"><strong>Certification Name</strong></label>
+        <br>
+        <span id="certName">{{certification.certName | missingData}}</span>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="issuingOrg"><strong>Issuing Organization</strong></label>
+        <br>
+        <span id="issuingOrg">{{certification.issuingOrg | missingData}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="expires"><strong>Expires</strong></label>
+        <br>
+        <span id="expires">{{certification.expires | missingData}}</span>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="issuingDate"><strong>Issuing Date</strong></label>
+        <br>
+        <span id="issuingDate">{{certification.issuingDate | missingData}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="expireDate"><strong>Expire Date</strong></label>
+        <br>
+        <span id="expireDate">{{certification.expireDate | missingData}}</span>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="certCode"><strong>Certification Code</strong></label>
+        <br>
+        <span id="certCode">{{certification.certCode | missingData}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="certUrl"><strong>Certification Url</strong></label>
+        <br>
+        <span id="certUrl">{{certification.certUrl | missingData}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-info margin-right-10" (click)="previousState()">
+        <i class="fa fa-arrow-left"></i>
+        <span class="margin-left-5">Back</span>
+      </button>
+      <button class="btn btn-primary" [routerLink]="['../../update-certifications', certification.id]">
+        <i class="fa fa-pencil"></i>
+        <span class="margin-left-5">Edit</span>
+      </button>
+    </div>
+  </div>
+
+</div>

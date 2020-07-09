@@ -1,0 +1,122 @@
+<div class="container margin-top-30">
+  <h3 class="margin-bottom-30">Project details</h3>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="projectId">
+          <strong>Project identifier</strong>
+        </label>
+        <br>
+        <span id="projectId">{{project.id | missingData}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="projectName"><strong>Project Name</strong></label>
+        <br>
+        <span id="projectName">{{project.projectName | missingData}}</span>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="projectAlias"><strong>Project Alias</strong></label>
+        <br>
+        <span id="projectAlias">{{project.projectAlias | missingData}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="companyName"><strong>Company name</strong></label>
+        <br>
+        <span id="companyName">{{project.companyName | missingData}}</span>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="companyAddress"><strong>Company address</strong></label>
+        <br>
+        <span id="companyAddress">{{project.companyAddress | missingData}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="state"><strong>State</strong></label>
+        <br>
+        <span id="state">{{project.state | missingData}}</span>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="city"><strong>City</strong></label>
+        <br>
+        <span id="city">{{project.city | missingData}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group">
+        <label class="form-check-label" for="zip"><strong>Zip</strong></label>
+        <br>
+        <span id="zip">{{project.zip | missingData}}</span>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <label class="form-check-label"><strong>Personal Project</strong></label>
+        <br>
+        <i class="fa" [ngClass]="project.personalProject | boolean"></i>
+      </div>
+    </div>
+  </div>
+  <div class="row margin-top-30">
+    <div class="table-responsive" *ngIf="project.projectTeamMembers.length > 0">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th><span>ID</span></th>
+          <th><span>Member Specialization</span></th>
+          <th><span>Member Name</span></th>
+          <th><span>Start Date</span></th>
+          <th><span>End Date</span></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let projectTeamMember of project.projectTeamMembers;">
+
+          <td>{{ projectTeamMember.id | missingData}}</td>
+          <td>
+            {{projectTeamMember.memberSpecialization | missingData}}
+          </td>
+          <td>
+            {{projectTeamMember.memberName | missingData}}
+          </td>
+          <td>
+            {{projectTeamMember.startDate | date: 'short' | missingData}}
+          </td>
+          <td>
+            {{projectTeamMember.endDate | date: 'short' | missingData}}
+          </td>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-info margin-right-10" (click)="previousState()">
+        <i class="fa fa-arrow-left"></i>
+        <span class="margin-left-5">Back</span>
+      </button>
+      <button class="btn btn-primary" [routerLink]="['../../update-project', project.id]">
+        <i class="fa fa-pencil"></i>
+        <span class="margin-left-5">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="container margin-top-30">
+  <h3>
+    <span>List Academic Studies</span>
+    <button class="btn btn-primary float-right" [routerLink]="['../update-academic-studies']">
+      <i class="fa fa-plus"></i>
+      <span class="margin-left-5">New Academic study</span>
+    </button>
+  </h3>
+  <table class="table margin-top-30 table-hover">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Educational Institution</th>
+      <th scope="col">Formation</th>
+      <th scope="col">Field Of Study</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let academic of academicStudies">
+      <th scope="row" class="click" [routerLink]="['../academic-studies-details', academic.id]">{{academic.id}}</th>
+      <td>{{academic.educationalInstitution}}</td>
+      <td>{{academic.formation}}</td>
+      <td>{{academic.fieldOfStudy}}</td>
+      <td>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-info btn-sm" [routerLink]="['../academic-studies-details', academic.id]">
+            <i class="fa fa-eye"></i>
+            <span class="margin-left-5">View</span>
+          </button>
+          <button type="button" class="btn btn-primary btn-sm" [routerLink]="['../update-academic-studies', academic.id]">
+            <i class="fa fa-pencil"></i>
+            <span class="margin-left-5">Edit</span>
+          </button>
+          <button type="button" class="btn btn-danger btn-sm" (click)="deleteAcademicStudies(academic.id)">
+            <i class="fa fa-times"></i>
+            <span class="margin-left-5">Delete</span>
+          </button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

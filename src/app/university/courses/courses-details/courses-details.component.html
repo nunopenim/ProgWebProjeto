@@ -1,0 +1,92 @@
+<div class="container margin-top-30">
+  <h3 class="margin-bottom-30">Course details</h3>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="courseId">
+          <strong>Course identifier</strong>
+        </label>
+        <br>
+        <span id="courseId">{{course.id | missingData}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="courseName"><strong>Course Name</strong></label>
+        <br>
+        <span id="courseName">{{course.courseName | missingData}}</span>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="courseOrg"><strong>Course Organization</strong></label>
+        <br>
+        <span id="courseOrg">{{course.courseOrg | missingData}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row margin-top-30">
+    <div class="table-responsive" *ngIf="course.teachersCourse.length > 0">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th><span>ID</span></th>
+          <th><span>Teacher Name</span></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let teacherCourse of course.teachersCourse;">
+
+          <td>
+            {{ teacherCourse.id | missingData}}
+          </td>
+          <td>
+            {{teacherCourse.teacherName | missingData}}
+          </td>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row margin-top-30">
+    <div class="table-responsive" *ngIf="course.subjectsCourse.length > 0">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th><span>ID</span></th>
+          <th><span>Subject Name</span></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let subjectCourse of course.subjectsCourse;">
+
+          <td>
+            {{ subjectCourse.id | missingData}}
+          </td>
+          <td>
+            {{subjectCourse.subjectName | missingData}}
+          </td>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-info margin-right-10" (click)="previousState()">
+        <i class="fa fa-arrow-left"></i>
+        <span class="margin-left-5">Back</span>
+      </button>
+      <button class="btn btn-primary" [routerLink]="['../../update-courses', course.id]">
+        <i class="fa fa-pencil"></i>
+        <span class="margin-left-5">Edit</span>
+      </button>
+    </div>
+  </div>
+
+</div>

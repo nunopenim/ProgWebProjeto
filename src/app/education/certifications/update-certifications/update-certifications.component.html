@@ -1,0 +1,107 @@
+<form [formGroup]="certificationForm" (ngSubmit)="updateCertification()">
+  <div class="container margin-top-30">
+    <h3 class="margin-bottom-30">{{getTitle()}}</h3>
+
+    <div class="row">
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="certName">Certification Name *</label>
+          <input type="text" class="form-control" id="certName" formControlName="certName"
+                 [ngClass]="isControlInvalid('certName') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('certName', 'required')">
+            This field is required
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="issuingOrg">Issuing Organization *</label>
+          <input type="text" class="form-control" id="issuingOrg" formControlName="issuingOrg"
+                 [ngClass]="isControlInvalid('issuingOrg') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('issuingOrg', 'required')">
+            This field is required
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="expires">Expires *</label>
+          <input type="text" class="form-control" id="expires" formControlName="expires"
+                 [ngClass]="isControlInvalid('expires') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('expires', 'required')">
+            This field is required
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="issuingDate">Issuing Date *</label>
+          <input type="date" class="form-control" id="issuingDate" formControlName="issuingDate"
+                 [ngClass]="isControlInvalid('issuingDate') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('issuingDate', 'required')">
+            This field is required
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="expireDate">Expire Date *</label>
+          <input type="date" class="form-control" id="expireDate" formControlName="expireDate"
+                 [ngClass]="isControlInvalid('expireDate') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('expireDate', 'required')">
+            This field is required
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="certCode">Certification Code *</label>
+          <input type="text" class="form-control" id="certCode" formControlName="certCode"
+                 [ngClass]="isControlInvalid('certCode') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('certCode', 'required')">
+            This field is required
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="certUrl">Certification Url</label>
+          <input type="text" class="form-control" id="certUrl" formControlName="certUrl"
+                 [ngClass]="isControlInvalid('certUrl') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('certUrl', 'required')">
+            This field is required
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-12">
+        <re-captcha formControlName="recaptchaForm"></re-captcha>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="certificationForm.invalid || isSaving">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="isSaving"></span>
+      <i class="fa fa-save" *ngIf="!isSaving"></i>
+      <span class="margin-left-5">Save</span>
+    </button>
+
+
+    <button type="button" class="btn btn-info margin-left-10" (click)="previousState()">
+      <i class="fa fa-arrow-left"></i>
+      <span class="margin-left-5">Back</span>
+    </button>
+
+  </div>
+</form>

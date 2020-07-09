@@ -1,0 +1,117 @@
+<form [formGroup]="academicStudiesForm" (ngSubmit)="updateAcademicStudies()">
+  <div class="container margin-top-30">
+    <h3 class="margin-bottom-30">{{getTitle()}}</h3>
+
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="educationalInstitution">Educational Instituition *</label>
+          <input type="text" class="form-control" id="educationalInstitution" formControlName="educationalInstitution"
+                 [ngClass]="isControlInvalid('educationalInstitution') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('educationalInstitution', 'required')">
+            This field is required
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="formation">Formation *</label>
+          <input type="text" class="form-control" id="formation" formControlName="formation"
+                 [ngClass]="isControlInvalid('formation') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('formation', 'required')">
+            This field is required
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="fieldOfStudy">Field of Study *</label>
+          <input type="text" class="form-control" id="fieldOfStudy" formControlName="fieldOfStudy"
+                 [ngClass]="isControlInvalid('fieldOfStudy') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('fieldOfStudy', 'required')">
+            This field is required
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="fieldOfStudy">Start Date</label>
+          <input type="date" class="form-control" id="startDate" formControlName="startDate"
+                 [ngClass]="isControlInvalid('startDate') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('startDate', 'required')">
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="fieldOfStudy">End Date</label>
+          <input type="date" class="form-control" id="endDate" formControlName="endDate"
+                 [ngClass]="isControlInvalid('endDate') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('endDate', 'required')">
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="fieldOfStudy">Grade</label>
+          <input type="number" class="form-control" id="grade" formControlName="grade"
+                 [ngClass]="isControlInvalid('grade') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('grade', 'min')">
+            Grade between 0 and 20
+          </div>
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('grade', 'max')">
+            Grade between 0 and 20
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="activities">Activities</label>
+          <input type="text" class="form-control" id="activities" formControlName="activities"
+                 [ngClass]="isControlInvalid('activities') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('activities', 'required')">
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" class="form-control" id="description" formControlName="description"
+                 [ngClass]="isControlInvalid('description') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('description', 'required')">
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <hr>
+
+    <div class="row">
+      <div class="col-12">
+        <re-captcha formControlName="recaptchaForm"></re-captcha>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="academicStudiesForm.invalid || isSaving">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="isSaving"></span>
+      <i class="fa fa-save" *ngIf="!isSaving"></i>
+      <span class="margin-left-5">Save</span>
+    </button>
+
+    <button type="button" class="btn btn-info margin-left-10" (click)="previousState()">
+      <i class="fa fa-arrow-left"></i>
+      <span class="margin-left-5">Back</span>
+    </button>
+  </div>
+</form>

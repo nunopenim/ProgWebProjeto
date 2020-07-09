@@ -1,0 +1,153 @@
+<form [formGroup]="projectForm" (ngSubmit)="updateProject()">
+  <div class="container margin-top-30">
+    <h3 class="margin-bottom-30">{{getTitle()}}</h3>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="projectName">Project Name *</label>
+          <input type="text" class="form-control" id="projectName" formControlName="projectName"
+                 [ngClass]="isControlInvalid('projectName') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('projectName', 'required')">
+            This field is required
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="projectAlias">Project Alias</label>
+          <input type="text" class="form-control" id="projectAlias" formControlName="projectAlias"
+                 [ngClass]="isControlInvalid('projectAlias') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('projectAlias', 'minlength')">
+            Minimum length is 3
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="companyName">Company name *</label>
+          <input type="text" class="form-control" id="companyName" formControlName="companyName"
+                 [ngClass]="isControlInvalid('companyName') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('companyName', 'required')">
+            This field is required
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="companyAddress">Company address *</label>
+          <input type="text" class="form-control" id="companyAddress" formControlName="companyAddress"
+                 [ngClass]="isControlInvalid('companyAddress') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('companyAddress', 'required')">
+            This field is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="state">State</label>
+          <input type="text" class="form-control" id="state" formControlName="state">
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" class="form-control" id="city" formControlName="city">
+        </div>
+      </div>
+    </div>
+    <div class="row border-bottom">
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="zip">Zip</label>
+          <input type="text" class="form-control" id="zip" formControlName="zip"
+                 [ngClass]="isControlInvalid('zip') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('zip', 'pattern')">
+            Wrong zip format
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 check-style">
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="personalProject" formControlName="personalProject">
+          <label class="form-check-label" for="personalProject">Personal project</label>
+        </div>
+      </div>
+    </div>
+    <h3 class="margin-top-30">
+      <span>Team Members</span>
+      <button class="btn btn-primary float-right" type="button" (click)="addProjectTeamMember()">
+        <i class="fa fa-plus"></i>
+        <span class="margin-left-5">Add project team member</span>
+      </button>
+    </h3>
+    <div class="row margin-top-30">
+      <div class="table-responsive" *ngIf="projectTeamMembersControls.length > 0">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+          <tr>
+            <th><span>ID</span></th>
+            <th><span>Member Specialization</span></th>
+            <th><span>Member Name</span></th>
+            <th><span>Start Date</span></th>
+            <th><span>End Date</span></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let projectTeamMember of projectTeamMembersControls; index as i;" formArrayName="projectTeamMembers">
+            <ng-container [formGroupName]="i">
+              <td>{{ projectTeamMember.get('id').value }}</td>
+              <td>
+                <select class="form-control" name="memberSpecialization-{{i}}" id="memberSpecialization-{{i}}" formControlName="memberSpecialization">
+                  <option value="PM">Project Manager</option>
+                  <option value="TECH_ARCH">Technical Architect</option>
+                  <option value="DEVOPS">DevOps</option>
+                  <option value="SD">Senior Developer</option>
+                  <option value="D">Developer</option>
+                  <option value="TM">Test Manager</option>
+                  <option value="T">Tester</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" class="form-control" name="memberName-{{i}}" id="memberName-{{i}}" formControlName="memberName"/>
+              </td>
+              <td>
+                <input type="date" class="form-control" name="startDate-{{i}}" id="startDate-{{i}}" formControlName="startDate"/>
+              </td>
+              <td>
+                <input type="date" class="form-control" name="endDate-{{i}}" id="endDate-{{i}}" formControlName="endDate"/>
+              </td>
+              <td class="text-right">
+                <div class="btn-group flex-btn-group-container">
+                  <button type="button" class="btn btn-danger btn-sm" (click)="deleteProjectTeamMember(i)">
+                    <i class="fa fa-times"></i>
+                    <span class="d-none d-md-inline"> Delete</span>
+                  </button>
+                </div>
+              </td>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <re-captcha formControlName="recaptchaForm"></re-captcha>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="projectForm.invalid || isSaving">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="isSaving"></span>
+      <i class="fa fa-save" *ngIf="!isSaving"></i>
+      <span class="margin-left-5">Save</span>
+    </button>
+
+    <button type="button" class="btn btn-info margin-left-10" (click)="previousState()">
+      <i class="fa fa-arrow-left"></i>
+      <span class="margin-left-5">Back</span>
+    </button>
+  </div>
+</form>

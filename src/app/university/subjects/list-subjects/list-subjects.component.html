@@ -1,0 +1,40 @@
+<div class="container margin-top-30">
+  <h3>
+    <span>List Subjects</span>
+    <!--<button class="btn btn-primary float-right" [routerLink]="['../update-subjects']">
+      <i class="fa fa-plus"></i>
+      <span class="margin-left-5">New Subject</span>
+    </button>-->
+  </h3>
+  <table class="table margin-top-30 table-hover">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Subject name</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let subject of subjects">
+      <th scope="row" class="click" [routerLink]="['../subjects-details', subject.id]">{{subject.id}}</th>
+      <td>{{subject.subjectName}}</td>
+      <td>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-info btn-sm" [routerLink]="['../subjects-details', subject.id]">
+            <i class="fa fa-eye"></i>
+            <span class="margin-left-5">View</span>
+          </button>
+          <button type="button" class="btn btn-primary btn-sm" [routerLink]="['../update-subjects', subject.id]">
+            <i class="fa fa-pencil"></i>
+            <span class="margin-left-5">Edit</span>
+          </button>
+          <button type="button" class="btn btn-danger btn-sm" (click)="deleteSubject(subject.id)">
+            <i class="fa fa-times"></i>
+            <span class="margin-left-5">Delete</span>
+          </button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

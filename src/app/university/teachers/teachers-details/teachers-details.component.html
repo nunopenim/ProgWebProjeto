@@ -1,0 +1,39 @@
+<div class="container margin-top-30">
+  <h3 class="margin-bottom-30">Teacher details</h3>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="teacherId">
+          <strong>Teacher identifier</strong>
+        </label>
+        <br>
+        <span id="teacherId">{{teacher.id | missingData}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="teacherName"><strong>Teacher Name</strong></label>
+        <br>
+        <span id="teacherName">{{teacher.teacherName | missingData}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-info margin-right-10" (click)="previousState()">
+        <i class="fa fa-arrow-left"></i>
+        <span class="margin-left-5">Back</span>
+      </button>
+      <button class="btn btn-primary" [routerLink]="['../../update-teachers', teacher.id]">
+        <i class="fa fa-pencil"></i>
+        <span class="margin-left-5">Edit</span>
+      </button>
+    </div>
+  </div>
+
+</div>

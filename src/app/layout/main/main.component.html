@@ -1,0 +1,76 @@
+<div class="jumbotron">
+  <h1 class="display-4">My LinkedIn - 21700874 - 21803482</h1>
+  <p class="lead">
+    Projeto final de programação Web.
+    <br>
+    21700874 - Nuno Penim
+    <br>
+    21803482 - Pedro Canaveira
+  </p>
+  <!--<a class="btn btn-primary btn-lg" role="button" routerLink="add-project">Create a project!</a>-->
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Teachers</h2>
+      <div>
+        <table class="table margin-top-30 table-hover">
+          <thead class="thead-light">
+          <tr>
+            <th scope="col">Latest Added</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let teacher of teachers; index as i">
+            <ng-container *ngIf="i == teachers.length - 3 || i == teachers.length - 2 || i == teachers.length -1">
+              <th scope="row" class="click" [routerLink]="['../teachers-details', teacher.id]">{{teacher.teacherName}}</th>
+            </ng-container>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <p><a class="btn btn-primary" href="#" role="button" [routerLink]="['list-teachers']" >View more »</a></p>
+    </div>
+    <div class="col-md-4">
+      <h2>Subjects</h2>
+      <div>
+        <table class="table margin-top-30 table-hover">
+          <thead class="thead-light">
+          <tr>
+            <th scope="col">Latest Added</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let subject of subjects; index as i">
+            <ng-container *ngIf="i == subjects.length - 3 || i == subjects.length - 2 || i == subjects.length -1">
+              <th scope="row" class="click" [routerLink]="['../subjects-details', subject.id]">{{subject.subjectName}}</th>
+            </ng-container>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <p><a class="btn btn-primary" href="#" role="button" [routerLink]="['list-subjects']" >View more »</a></p>
+    </div>
+    <div class="col-md-4">
+      <h2>Courses</h2>
+      <div>
+        <table class="table margin-top-30 table-hover">
+          <thead class="thead-light">
+          <tr>
+            <th scope="col">Latest Added</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let course of courses; index as i">
+              <ng-container *ngIf="i == courses.length - 3 || i == courses.length - 2 || i == courses.length -1">
+                <th scope="row" class="click" [routerLink]="['../courses-details', course.id]">{{course.courseName}}</th>
+              </ng-container>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <p><a class="btn btn-primary" href="#" role="button" [routerLink]="['list-courses']" >View more »</a></p>
+    </div>
+  </div>
+</div>
+

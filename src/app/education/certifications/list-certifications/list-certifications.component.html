@@ -1,0 +1,44 @@
+<div class="container margin-top-30">
+  <h3>
+    <span>List Certifications</span>
+    <button class="btn btn-primary float-right" [routerLink]="['../update-certifications']">
+      <i class="fa fa-plus"></i>
+      <span class="margin-left-5">New Certification</span>
+    </button>
+  </h3>
+  <table class="table margin-top-30 table-hover">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Certification name</th>
+      <th scope="col">Issuing Organization</th>
+      <th scope="col">Expires</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let certification of certifications">
+      <th scope="row" class="click" [routerLink]="['../details-certifications', certification.id]">{{certification.id}}</th>
+      <td>{{certification.certName}}</td>
+      <td>{{certification.issuingOrg}}</td>
+      <td>{{certification.expires}}</td>
+      <td>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-info btn-sm" [routerLink]="['../certifications-details', certification.id]">
+            <i class="fa fa-eye"></i>
+            <span class="margin-left-5">View</span>
+          </button>
+          <button type="button" class="btn btn-primary btn-sm" [routerLink]="['../update-certifications', certification.id]">
+            <i class="fa fa-pencil"></i>
+            <span class="margin-left-5">Edit</span>
+          </button>
+          <button type="button" class="btn btn-danger btn-sm" (click)="deleteCertification(certification.id)">
+            <i class="fa fa-times"></i>
+            <span class="margin-left-5">Delete</span>
+          </button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

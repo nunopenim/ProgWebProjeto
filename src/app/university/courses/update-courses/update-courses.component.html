@@ -1,0 +1,139 @@
+<form [formGroup]="courseForm" (ngSubmit)="updateCourse()">
+  <div class="container margin-top-30">
+    <h3 class="margin-bottom-30">{{getTitle()}}</h3>
+
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="courseName">Course Name *</label>
+          <input type="text" class="form-control" id="courseName" formControlName="courseName"
+                 [ngClass]="isControlInvalid('courseName') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('courseName', 'required')">
+            This field is required
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="courseOrg">Course Organization *</label>
+          <input type="text" class="form-control" id="courseOrg" formControlName="courseOrg"
+                 [ngClass]="isControlInvalid('courseOrg') ? 'is-invalid' : '' ">
+          <div class="invalid-feedback" *ngIf="isControlInvalidAndHasError('courseOrg', 'required')">
+            This field is required
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="margin-top-30">
+      <span>Teachers</span>
+      <button class="btn btn-primary float-right" type="button" (click)="addTeacherCourse()">
+        <i class="fa fa-plus"></i>
+        <span class="margin-left-5">Add teacher</span>
+      </button>
+
+    </h3>
+    <div class="row margin-top-30">
+      <div class="table-responsive" *ngIf="courseTeachersControls.length > 0">
+
+        <table class="table table-striped">
+          <thead class="thead-dark">
+          <tr>
+            <th><span>ID</span></th>
+            <th><span>Available Teachers</span></th>
+            <th><span>Teacher Name</span></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let teacherCourse of courseTeachersControls; index as i;" formArrayName="teachersCourse">
+            <ng-container [formGroupName]="i">
+              <td>{{ teacherCourse.get('id').value }}</td>
+
+              <td class="form-group">
+                <select id="id" name="id" class="form-control">
+                  <option></option>
+                  <option [value]="teacher.id" *ngFor="let teacher of teachers | async " (click)="addToForm(teacher.id, teacher.teacherName, i)">
+                    {{teacher.id}}<span> | </span>{{teacher.teacherName}}
+                  </option>
+                </select>
+              </td>
+
+              <td>
+                <input type="text" class="form-control" name="teacherName-{{i}}" id="teacherName-{{i}}" formControlName="teacherName"/>
+              </td>
+              <td class="text-right">
+                <div class="btn-group flex-btn-group-container">
+                  <button type="button" class="btn btn-danger btn-sm" (click)="deleteTeacherCourse(i)">
+                    <i class="fa fa-times"></i>
+                    <span class="d-none d-md-inline"> Delete</span>
+                  </button>
+                </div>
+              </td>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3 class="margin-top-30">
+      <span>Subjects</span>
+      <button class="btn btn-primary float-right" type="button" (click)="addSubjectCourse()">
+        <i class="fa fa-plus"></i>
+        <span class="margin-left-5">Add subject</span>
+      </button>
+    </h3>
+    <div class="row margin-top-30">
+      <div class="table-responsive" *ngIf="subjectsCourseControls.length > 0">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+          <tr>
+            <th><span>ID</span></th>
+            <th><span>Subject Name</span></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let subjectCourse of subjectsCourseControls; index as i;" formArrayName="subjectsCourse">
+            <ng-container [formGroupName]="i">
+              <td>{{ subjectCourse.get('id').value }}</td>
+              <td>
+                <input type="text" class="form-control" name="subjectName-{{i}}" id="subjectName-{{i}}" formControlName="subjectName"/>
+              </td>
+              <td class="text-right">
+                <div class="btn-group flex-btn-group-container">
+                  <button type="button" class="btn btn-danger btn-sm" (click)="deleteSubjectCourse(i)">
+                    <i class="fa fa-times"></i>
+                    <span class="d-none d-md-inline"> Delete</span>
+                  </button>
+                </div>
+              </td>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-12">
+        <re-captcha formControlName="recaptchaForm"></re-captcha>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="courseForm.invalid || isSaving">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="isSaving"></span>
+      <i class="fa fa-save" *ngIf="!isSaving"></i>
+      <span class="margin-left-5">Save</span>
+    </button>
+
+    <button type="button" class="btn btn-info margin-left-10" (click)="previousState()">
+      <i class="fa fa-arrow-left"></i>
+      <span class="margin-left-5">Back</span>
+    </button>
+
+  </div>
+</form>
+
